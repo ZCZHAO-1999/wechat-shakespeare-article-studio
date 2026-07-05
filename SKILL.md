@@ -1,9 +1,9 @@
 ---
-name: wechat-article-studio
+name: wechat-shakespeare-article-studio
 description: Produce one publish-ready WeChat article package from a Chinese or English draft: Word-first layout, phone-readable typography, clear paragraph rhythm, disciplined image placement, commercial-safe visuals, paste-ready HTML, and release notes. / 将中文或英文草稿生产为一套可发布的微信公众号交付包:以 Word 为主交付,严格控制字号、段距、配图、阅读呼吸、HTML 备份和发布说明。 Use this workflow whenever the user mentions 公众号, 推文, 微信文章, WeChat article, 排版, 配图, 作图, 头图, 封面图, 信息图, or pastes/uploads a draft and wants it formatted, illustrated, or made publishable.
 ---
 
-# WeChat Article Studio / 公众号一次成稿流水线
+# WeChat Shakespeare Article Studio / 公众号一次成稿流水线
 
 > English: This workflow turns a draft into a phone-readable WeChat article package, with Word as the main delivery format.
 >

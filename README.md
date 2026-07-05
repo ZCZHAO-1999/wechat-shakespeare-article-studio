@@ -1,104 +1,160 @@
-# WeChat Article Studio
+# WeChat Shakespeare Article Studio
 
-一套用于生产微信公众号成稿的 agent-ready workflow。核心交付是一份排好版、嵌好图、可直接复制进公众号后台的 Word 文档。
+Top-tier WeChat article workflow for Claude Code, Claude CLI, Codex CLI, and other local writing agents.
 
-An agent-ready workflow for producing WeChat article packages from Chinese or English drafts. The main deliverable is a Word document with controlled typography, embedded visuals, and a paste-ready publishing flow.
+一套面向微信公众号深度稿、财经科技稿、产品分析稿的 agent-ready 写作与排版工作流。目标不是“生成一篇文章”，而是把一个主题或草稿推进到可发布的完整成稿包：正文、标题、封面、信息图、HTML 预览、发布说明和质量检查。
 
-## 核心标准 / Core Standard
+## Why This Exists
 
-好文章最终落在阅读体验上:
+Most AI writing workflows stop too early.
 
-- 排版有范式:先判断报道型、拆解型、访谈/人物型或产品/技术型,再套对应阅读节奏。
-- 字号稳定:正文、章节、小标题、图注和引语各有固定层级。
-- 呼吸稳定:段落长度、段后距、图前图后留白都要能在手机上顺着读。
-- 配图有职责:封面负责第一眼,信息图负责解释,场景图负责转场或补充现场感。
-- 内容去 AI 腔:清理模板化转折、空泛宏大词、机械排比和万能收束句。
-- 交付能直接用:Word、HTML、图片原图、发布说明和 zip 一起交付。
+They can produce paragraphs, but they often fail at the parts that decide whether an article can actually be published:
 
-The standard is not measured by length or ornament. It is measured by whether a reader can keep moving through the article without friction, and whether an editor can publish the package without rebuilding it.
+- opening tension
+- evidence discipline
+- paragraph rhythm
+- mobile reading flow
+- typography hierarchy
+- cover and infographic quality
+- source notes and publishing cautions
+- removing AI-like sentence patterns
 
-## 参考对象 / Reference Set
+This repository turns those requirements into a repeatable workflow.
 
-This workflow studies the shared production habits of strong Chinese finance and technology publishers: sharp entry points, concrete information, source discipline, clean section logic, and image-supported reading.
+## What It Produces
 
-这套工作流参考财经、科技、创投内容里的成熟做法:题眼清楚,信息具体,判断克制,结构顺滑,图文关系明确。它不复刻某一家媒体的腔调,只吸收可迁移的生产标准。
+Core package:
 
-## 产出 / Deliverables
+- `final.md`: edited article, source notes, and image placement.
+- `wechat-ready.html`: mobile-readable WeChat-style preview.
+- `assets/cover.svg`: article-specific cover visual.
+- `assets/*.svg`: timelines, mechanism diagrams, data cards, or explainers.
+- optional `.docx`: Word-first publishing package when the agent runtime supports document assembly.
+- optional `publishing-note.txt`: title set, summary, source cautions, image list, and paste steps.
 
-- `文章名.docx`: main deliverable, built for copy-paste publishing in the WeChat editor.
-- `article.html`: paste-ready HTML backup with images embedded.
-- `cover + figX.png`: cover and infographic originals.
-- `发布说明.txt`: title, summary, image list, licensing notes, wording cautions, and publishing steps.
-- `zip`: packaged final delivery.
+Example now included:
 
-## 工作流 / Workflow
+- [Fable 5 被封禁，智谱冲万亿：AI 供应链开始换备胎](examples/fable-zhipu/final.md)
+- [WeChat HTML preview](examples/fable-zhipu/wechat-ready.html)
 
-1. Read the draft, extract facts, figures, names, claims, and sensitive details.
-2. Set the article rhythm: opening, sections, quotes, images, summary, and closing note.
-3. Remove AI-like prose patterns and replace vague language with concrete facts or scenes.
-4. Plan image placement before rendering: each visual needs a role and a position.
-5. Assemble the Word document with fixed type hierarchy, spacing, captions, and embedded images.
-6. Export the HTML backup and run QA on images, Word pages, and mobile-width reading flow.
-7. Package everything with release notes.
+## Editorial Standard
 
-## 接入方式 / Agent Compatibility
+The standard is reading experience, not length.
 
-This repository is designed as a file-based workflow that any capable coding or writing agent can read and execute. It is not tied to one runtime.
+A publishable article should have:
 
-Recommended entry file:
+- a first screen that makes the reader understand why the topic matters now
+- a clear information ladder, not a list of loosely connected opinions
+- short but not choppy paragraphs
+- numbers that come from traceable sources
+- titles and covers that do not overclaim sensitive facts
+- visuals that explain the article, not decorate it
+- enough white space for phone reading
+- no obvious AI scaffolding such as “not only A, but also B”
 
-- [SKILL.md](SKILL.md): start here for the full execution protocol.
+## Visual Standard
 
-Expected agent behavior:
+Visuals must be article-specific.
 
-- Read [references/wechat-layout-patterns.md](references/wechat-layout-patterns.md) before writing or laying out the article.
-- Read [references/writing-patterns.md](references/writing-patterns.md) before rewriting finance, technology, venture, or industry drafts.
-- Read [references/visual-production.md](references/visual-production.md) before creating covers, infographics, or scene visuals.
-- Read [references/release-gate.md](references/release-gate.md) before final delivery.
-- Read [references/layout-wechat.md](references/layout-wechat.md) before building Word or HTML output.
-- Read [references/editorial.md](references/editorial.md) before rewriting the article.
-- Use [scripts/](scripts) when rendering figures, embedding images, or assembling `.docx` files.
+Good visuals in this workflow can be:
 
-Works well with:
+- cover cards with the article’s actual mechanism or tension
+- event timelines
+- causal loops
+- market maps
+- comparison tables
+- source-backed data charts
+- quote/data cards
 
-- Claude Code / Claude CLI
+Bad visuals are rejected:
+
+- generic dark node diagrams
+- decorative abstract backgrounds
+- charts without a real data question
+- stock images without verified commercial rights
+- repeated visual templates across unrelated articles
+
+## Source Standard
+
+Background research must use top-tier sources only.
+
+Allowed sources include:
+
+- company official announcements and documentation
+- regulators, courts, government agencies, and standards bodies
+- primary research institutions and datasets
+- audited public filings
+- reputable business, technology, or financial media with named reporting
+
+Rejected sources include:
+
+- random SEO articles
+- unsourced blog posts
+- AI-summary pages
+- repost farms
+- screenshots with no original source
+- vague “industry data says” claims
+
+See [references/source-quality.md](references/source-quality.md).
+
+## How To Use
+
+Start here:
+
+- [SKILL.md](SKILL.md)
+
+Recommended agent flow:
+
+1. Read [references/source-quality.md](references/source-quality.md) before any search.
+2. Read [references/writing-patterns.md](references/writing-patterns.md) to choose the article structure.
+3. Read [references/wechat-layout-patterns.md](references/wechat-layout-patterns.md) before layout.
+4. Read [references/visual-production.md](references/visual-production.md) before creating images.
+5. Read [references/release-gate.md](references/release-gate.md) before delivery.
+
+Compatible with:
+
+- Claude Code
+- Claude CLI
 - Codex CLI
-- Any local CLI agent that can read files, run scripts, inspect images, and create `.docx` / HTML outputs
+- local agent runners that can read files, search, edit Markdown/HTML, create images, and run scripts
 
 Search keywords:
 
 - WeChat article workflow
 - WeChat article layout
-- Claude Code skill
-- Claude CLI workflow
-- Codex CLI skill
-- AI agent writing workflow
+- Claude Code writing skill
+- Claude CLI article workflow
+- Codex CLI writing workflow
+- AI agent WeChat writing
+- Chinese finance technology article layout
 
-## 质量检查 / Quality Checks
+## Repository Structure
 
-- No unverified numbers.
-- No sensitive claims in titles, summaries, covers, or infographics.
-- No decorative images without a reading function.
-- No generic final visuals; every production image must encode article-specific substance.
-- No long text wall across more than six consecutive paragraphs.
-- No abrupt image insertion without a setup paragraph and a follow-up sentence.
-- No common AI tics such as binary reversal formulas, empty business jargon, or repetitive sentence scaffolds.
+- [SKILL.md](SKILL.md): execution protocol for agents.
+- [references/source-quality.md](references/source-quality.md): source rules for background research.
+- [references/writing-patterns.md](references/writing-patterns.md): finance, technology, venture, and product writing patterns.
+- [references/wechat-layout-patterns.md](references/wechat-layout-patterns.md): mobile reading rhythm and WeChat layout archetypes.
+- [references/visual-production.md](references/visual-production.md): multimodal and code-native visual production rules.
+- [references/release-gate.md](references/release-gate.md): final go-live quality gate.
+- [examples/fable-zhipu](examples/fable-zhipu): complete article example with HTML preview and SVG visuals.
+- [scripts](scripts): helpers for rendering figures and layout samples.
 
-## 仓库结构 / Repository Structure
+## Quality Gate
 
-- [SKILL.md](SKILL.md): core execution protocol and recommended agent entry point.
-- [references/wechat-layout-patterns.md](references/wechat-layout-patterns.md): WeChat layout patterns, mobile reading rhythm, and article archetypes.
-- [references/writing-patterns.md](references/writing-patterns.md): finance and technology writing patterns, opening modes, information ladders, and sample structures.
-- [references/visual-production.md](references/visual-production.md): multimodal and no-multimodal visual production rules.
-- [references/release-gate.md](references/release-gate.md): final go-live gate for content, visuals, layout, and package delivery.
-- [references/editorial.md](references/editorial.md): voice, structure, title, summary, and AI-prose cleanup.
-- [references/layout-wechat.md](references/layout-wechat.md): Word layout, typography, spacing, HTML backup, and QA.
-- [references/design-system.md](references/design-system.md): visual system and image responsibilities.
-- [references/images-sourcing.md](references/images-sourcing.md): commercial image sourcing and license verification.
-- [scripts/](scripts): helpers for rendering, image embedding, font setup, and Word assembly.
+Before release, the output must pass:
 
-## 最终目标 / Goal
+- no unsupported numbers
+- no weak or random background sources
+- no title/cover overclaiming
+- no generic final visuals
+- no long wall of text across multiple phone screens
+- no abrupt image insertion
+- no obvious AI-prose patterns
+- no missing source list
+- no broken image path in HTML preview
+
+## Goal
 
 Draft in. Publishable WeChat package out.
 
-草稿进入流程,交付出来的是一份能读、能看、能复制、能发布的公众号成稿包。
+草稿进入流程，交付出来的是一份能读、能看、能复制、能发布的公众号成稿。
