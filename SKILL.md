@@ -29,6 +29,7 @@ description: Produce one publish-ready WeChat article package from a Chinese or 
 先读 `references/wechat-layout-patterns.md`(公众号排版范式,通读)、
 `references/layout-wechat.md`(排版、字号、呼吸感是本工作流的核心,通读)与
 `references/writing-patterns.md`(财经科技写作模式,通读)、
+`references/source-quality.md`(背景搜索与顶尖来源规范,涉及搜索时强制)、
 `references/editorial.md`(含 AI 腔消毒);规划配图时读 `references/visual-production.md`(多模态/纯代码配图路线)、
 `references/design-system.md`(信息图)与
 `references/images-sourcing.md`(商用网图)。规范是硬约束。
@@ -81,20 +82,22 @@ python3 ../scripts/render.py figX.html figX.png   # 信息图,2x
 
 ## Hard Rules / 硬规则
 1. 不编数字;清单外数字一律占位上报。
-2. 网图必须商用授权可验证:仅限 images-sourcing.md 白名单来源,逐图核对授权页,
+2. 背景搜索只使用顶尖、可信、可追溯来源;禁用随机 SEO、无来源博客、AI 摘要、来路不明数据。
+3. 网图必须商用授权可验证:仅限 images-sourcing.md 白名单来源,逐图核对授权页,
    来源与协议写进发布说明;付费库预览图、editorial-only、品牌宣传照一律禁用。
-3. 竞品/敏感数字:仅行文 + 缓冲语,不进图、封面、标题、摘要。
-4. 多业务默认平行呈现;"主线"字样须作者点头。
-5. 三道 QA 不许省。
-6. 代拟引语标注"发布前请本人确认";同号跨文不复用引语。
-7. 出现"不是 A,而是 B"、"本质上"、"赋能"、"闭环"、"重塑"等模板腔,默认改写或删除。
-8. 示例图只是 QA fixture;正式交付图不能是通用节点图,必须包含文章专属机制、证据、场景或产品结构。
+4. 竞品/敏感数字:仅行文 + 缓冲语,不进图、封面、标题、摘要。
+5. 多业务默认平行呈现;"主线"字样须作者点头。
+6. 三道 QA 不许省。
+7. 代拟引语标注"发布前请本人确认";同号跨文不复用引语。
+8. 出现"不是 A,而是 B"、"本质上"、"赋能"、"闭环"、"重塑"等模板腔,默认改写或删除。
+9. 示例图只是 QA fixture;正式交付图不能是通用节点图,必须包含文章专属机制、证据、场景或产品结构。
 
 ## File Map / 文件地图
 | 文件 | 用途 |
 |---|---|
 | `references/wechat-layout-patterns.md` | **核心**:公众号排版范式、手机阅读流、首屏、配图节奏、版式模型 |
 | `references/writing-patterns.md` | **核心**:财经科技写作模式、开场、信息阶梯、小标题、段落推进 |
+| `references/source-quality.md` | **核心**:背景搜索、顶尖来源、弱来源禁用、搜索记录 |
 | `references/layout-wechat.md` | **核心**:docx 排版、字号、段距、粘贴流程、HTML 模板、QA、发布说明模板 |
 | `references/visual-production.md` | **核心**:多模态作图、无多模态纯代码作图、视觉质量标准 |
 | `references/release-gate.md` | **核心**:最终上线门槛、内容/视觉/排版/交付 QA |
