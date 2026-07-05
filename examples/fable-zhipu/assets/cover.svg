@@ -1,72 +1,89 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
   <defs>
-    <linearGradient id="paper" x1="0" x2="1" y1="0" y2="1">
-      <stop offset="0" stop-color="#fbf3e7"/>
-      <stop offset=".56" stop-color="#f6efe4"/>
-      <stop offset="1" stop-color="#e9f3ef"/>
+    <radialGradient id="glowA" cx="70%" cy="42%" r="48%">
+      <stop offset="0" stop-color="#29445a" stop-opacity=".76"/>
+      <stop offset=".48" stop-color="#172331" stop-opacity=".42"/>
+      <stop offset="1" stop-color="#070b12" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowB" cx="35%" cy="56%" r="42%">
+      <stop offset="0" stop-color="#8c3e32" stop-opacity=".28"/>
+      <stop offset=".58" stop-color="#201019" stop-opacity=".16"/>
+      <stop offset="1" stop-color="#070b12" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="line" x1="0" x2="1">
+      <stop offset="0" stop-color="#c45a45"/>
+      <stop offset="1" stop-color="#8fc7e5"/>
     </linearGradient>
-    <linearGradient id="risk" x1="0" x2="1">
-      <stop offset="0" stop-color="#b24a38"/>
-      <stop offset="1" stop-color="#273a48"/>
-    </linearGradient>
-    <pattern id="grid" width="42" height="42" patternUnits="userSpaceOnUse">
-      <path d="M42 0H0V42" fill="none" stroke="#d9cfbf" stroke-width="1" opacity=".52"/>
-      <circle cx="0" cy="0" r="1.2" fill="#c7baa8" opacity=".45"/>
+    <pattern id="microgrid" width="36" height="36" patternUnits="userSpaceOnUse">
+      <path d="M36 0H0V36" fill="none" stroke="#233243" stroke-width="1" opacity=".38"/>
     </pattern>
     <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#6a5a48" flood-opacity=".16"/>
+      <feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#000" flood-opacity=".38"/>
+    </filter>
+    <filter id="softGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="14" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
     </filter>
   </defs>
-  <rect width="1200" height="675" rx="34" fill="url(#paper)"/>
-  <rect width="1200" height="675" rx="34" fill="url(#grid)" opacity=".68"/>
-  <circle cx="898" cy="126" r="92" fill="#dceee8" opacity=".9"/>
-  <circle cx="1010" cy="455" r="160" fill="#f1dacb" opacity=".5"/>
-  <text x="72" y="88" font-family="Avenir Next, PingFang SC, sans-serif" font-size="18" font-weight="700" letter-spacing="7" fill="#b24a38">ANALYSIS · AI SUPPLY CHAIN</text>
-  <text x="72" y="168" font-family="Songti SC, Noto Serif CJK SC, serif" font-size="58" font-weight="800" fill="#171b1f">Fable 5 被封禁，</text>
-  <text x="72" y="240" font-family="Songti SC, Noto Serif CJK SC, serif" font-size="58" font-weight="800" fill="#171b1f">智谱冲万亿？</text>
-  <text x="72" y="315" font-family="PingFang SC, sans-serif" font-size="27" font-weight="500" fill="#4e5c63">模型采购进入双供应商时代</text>
-  <rect x="72" y="462" width="486" height="82" rx="20" fill="#fffefa" opacity=".9" filter="url(#shadow)"/>
-  <text x="104" y="501" font-family="PingFang SC, sans-serif" font-size="23" font-weight="700" fill="#273a48">立场：市场买的是备用通道</text>
-  <text x="104" y="529" font-family="PingFang SC, sans-serif" font-size="17" fill="#6d767b">能力、供应安全、部署自由度一起定价</text>
-  <text x="72" y="612" font-family="Avenir Next, PingFang SC, sans-serif" font-size="17" letter-spacing="4" fill="#9a7567">SOURCE-BOUND · WECHAT READY · HUMAN RHYTHM</text>
 
-  <g transform="translate(642 78)">
-    <text x="0" y="0" font-family="Avenir Next, PingFang SC, sans-serif" font-size="14" font-weight="700" letter-spacing="4" fill="#6f7a7f">MODEL SUPPLY ROUTER</text>
-    <path d="M44 82H222" stroke="#c9b8a4" stroke-width="3" stroke-linecap="round"/>
-    <path d="M284 82H432" stroke="#c9b8a4" stroke-width="3" stroke-linecap="round"/>
-    <path d="M44 312H222" stroke="#c9b8a4" stroke-width="3" stroke-linecap="round"/>
-    <path d="M284 312H432" stroke="#c9b8a4" stroke-width="3" stroke-linecap="round"/>
-    <path d="M222 82C260 128 260 266 222 312" fill="none" stroke="#b24a38" stroke-width="5" stroke-linecap="round"/>
-    <path d="M284 82C246 132 246 262 284 312" fill="none" stroke="#247c8d" stroke-width="5" stroke-linecap="round"/>
-    <path d="M236 62h34v270h-34z" rx="10" fill="#fffefa" stroke="#cdbdaa" stroke-width="2"/>
-    <text x="253" y="142" writing-mode="tb" font-family="PingFang SC, sans-serif" font-size="18" font-weight="700" fill="#b24a38">监管闸门</text>
-    <circle cx="253" cy="220" r="13" fill="#b24a38"/>
-    <path d="M244 211l18 18M262 211l-18 18" stroke="#fffefa" stroke-width="4" stroke-linecap="round"/>
-    <g filter="url(#shadow)">
-      <rect x="0" y="42" width="166" height="82" rx="16" fill="#fffefa"/>
-      <text x="22" y="76" font-family="Songti SC, serif" font-size="25" font-weight="700" fill="#171b1f">Fable 5</text>
-      <text x="22" y="105" font-family="PingFang SC, sans-serif" font-size="16" fill="#69737b">主供应商受限</text>
-    </g>
-    <g filter="url(#shadow)">
-      <rect x="340" y="42" width="178" height="82" rx="16" fill="#fffefa"/>
-      <text x="362" y="76" font-family="Songti SC, serif" font-size="25" font-weight="700" fill="#171b1f">模型路由</text>
-      <text x="362" y="105" font-family="PingFang SC, sans-serif" font-size="16" fill="#69737b">生产链路切换</text>
-    </g>
-    <g filter="url(#shadow)">
-      <rect x="0" y="272" width="166" height="82" rx="16" fill="#fffefa"/>
-      <text x="22" y="306" font-family="Songti SC, serif" font-size="25" font-weight="700" fill="#171b1f">GLM-5.2</text>
-      <text x="22" y="335" font-family="PingFang SC, sans-serif" font-size="16" fill="#69737b">开源权重备份</text>
-    </g>
-    <g filter="url(#shadow)">
-      <rect x="340" y="272" width="178" height="82" rx="16" fill="#fffefa"/>
-      <text x="362" y="306" font-family="Songti SC, serif" font-size="25" font-weight="700" fill="#171b1f">估值溢价</text>
-      <text x="362" y="335" font-family="PingFang SC, sans-serif" font-size="16" fill="#69737b">可用性被重估</text>
-    </g>
-    <path d="M166 312H214" stroke="#247c8d" stroke-width="4" stroke-linecap="round"/>
-    <path d="M304 312H340" stroke="#247c8d" stroke-width="4" stroke-linecap="round"/>
-    <path d="M166 82H214" stroke="#b24a38" stroke-width="4" stroke-linecap="round"/>
-    <path d="M304 82H340" stroke="#273a48" stroke-width="4" stroke-linecap="round"/>
-    <rect x="146" y="184" width="228" height="62" rx="18" fill="#fffefa" stroke="#ddcebd"/>
-    <text x="174" y="222" font-family="PingFang SC, sans-serif" font-size="22" font-weight="700" fill="#273a48">单模型依赖暴露</text>
+  <rect width="1200" height="675" rx="34" fill="#070b12"/>
+  <rect width="1200" height="675" rx="34" fill="url(#microgrid)" opacity=".62"/>
+  <rect width="1200" height="675" rx="34" fill="url(#glowA)"/>
+  <rect width="1200" height="675" rx="34" fill="url(#glowB)"/>
+
+  <text x="68" y="74" font-family="Avenir Next, PingFang SC, sans-serif" font-size="16" font-weight="700" letter-spacing="7" fill="#9fc9df">ANALYSIS · AI SUPPLY CHAIN</text>
+  <text x="68" y="154" font-family="Songti SC, Noto Serif CJK SC, serif" font-size="60" font-weight="800" fill="#f5f1e9">Fable 5 被封禁，</text>
+  <text x="68" y="230" font-family="Songti SC, Noto Serif CJK SC, serif" font-size="60" font-weight="800" fill="#f5f1e9">智谱冲万亿？</text>
+  <text x="70" y="296" font-family="PingFang SC, sans-serif" font-size="26" font-weight="500" fill="#aeb9c6">模型采购进入双供应商时代</text>
+
+  <g transform="translate(72 402)">
+    <rect width="468" height="88" rx="18" fill="#0d131d" stroke="#263648" filter="url(#shadow)"/>
+    <text x="28" y="38" font-family="PingFang SC, sans-serif" font-size="22" font-weight="700" fill="#f4efe7">立场：市场买的是备用通道</text>
+    <text x="28" y="66" font-family="PingFang SC, sans-serif" font-size="16" fill="#7f8d9b">能力、供应安全、部署自由度一起定价</text>
   </g>
+
+  <g transform="translate(640 108)">
+    <text x="18" y="-20" font-family="Avenir Next, PingFang SC, sans-serif" font-size="13" font-weight="700" letter-spacing="5" fill="#75869a">MODEL SUPPLY ROUTER</text>
+    <circle cx="234" cy="210" r="112" fill="#132232" stroke="#2f465b"/>
+    <circle cx="234" cy="210" r="54" fill="#0b111a" stroke="url(#line)" stroke-width="3"/>
+    <circle cx="234" cy="210" r="9" fill="#d7674f" filter="url(#softGlow)"/>
+    <text x="194" y="204" font-family="Avenir Next, PingFang SC, sans-serif" font-size="12" font-weight="800" letter-spacing="4" fill="#9fc9df">ROUTE</text>
+    <text x="188" y="228" font-family="PingFang SC, sans-serif" font-size="16" font-weight="700" fill="#f4efe7">切换层</text>
+
+    <path d="M128 96H202" stroke="#c45a45" stroke-width="3" stroke-linecap="round"/>
+    <path d="M266 96H342" stroke="#8fc7e5" stroke-width="3" stroke-linecap="round"/>
+    <path d="M128 326H202" stroke="#8fc7e5" stroke-width="3" stroke-linecap="round"/>
+    <path d="M266 326H342" stroke="#c45a45" stroke-width="3" stroke-linecap="round"/>
+    <path d="M208 104C168 158 168 264 208 318" fill="none" stroke="#c45a45" stroke-width="2.4" stroke-linecap="round" opacity=".82"/>
+    <path d="M260 104C302 158 302 264 260 318" fill="none" stroke="#8fc7e5" stroke-width="2.4" stroke-linecap="round" opacity=".82"/>
+
+    <g filter="url(#shadow)">
+      <rect x="0" y="52" width="150" height="88" rx="14" fill="#0d131d" stroke="#2a394a"/>
+      <text x="22" y="92" font-family="Songti SC, serif" font-size="28" font-weight="800" fill="#f4efe7">Fable 5</text>
+    </g>
+
+    <g filter="url(#shadow)">
+      <rect x="330" y="52" width="170" height="88" rx="14" fill="#0d131d" stroke="#2a394a"/>
+      <text x="352" y="92" font-family="Songti SC, serif" font-size="28" font-weight="800" fill="#f4efe7">模型路由</text>
+    </g>
+
+    <g filter="url(#shadow)">
+      <rect x="0" y="282" width="150" height="88" rx="14" fill="#0d131d" stroke="#2a394a"/>
+      <text x="22" y="322" font-family="Songti SC, serif" font-size="28" font-weight="800" fill="#f4efe7">GLM-5.2</text>
+    </g>
+
+    <g filter="url(#shadow)">
+      <rect x="330" y="282" width="170" height="88" rx="14" fill="#0d131d" stroke="#2a394a"/>
+      <text x="352" y="322" font-family="Songti SC, serif" font-size="28" font-weight="800" fill="#f4efe7">估值溢价</text>
+    </g>
+
+    <rect x="137" y="384" width="206" height="52" rx="14" fill="#101822" stroke="#314456"/>
+    <text x="166" y="416" font-family="PingFang SC, sans-serif" font-size="18" font-weight="700" fill="#dce8ef">单模型依赖暴露</text>
+  </g>
+
+  <text x="70" y="606" font-family="Avenir Next, PingFang SC, sans-serif" font-size="14" letter-spacing="5" fill="#647587">SOURCE-BOUND · WECHAT READY · HUMAN RHYTHM</text>
+  <text x="1038" y="606" font-family="Avenir Next, sans-serif" font-size="13" letter-spacing="4" fill="#647587">FIG · 01</text>
 </svg>
