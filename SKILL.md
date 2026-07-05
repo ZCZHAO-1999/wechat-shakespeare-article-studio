@@ -1,23 +1,34 @@
 ---
 name: wechat-article-studio
-description: Turn Chinese or English article drafts into one publish-ready, top-tier Word (.docx) for WeChat 公众号, with magazine-grade editorial structure, premium visual planning, commercial-safe imagery, a 2.35:1 cover, a paste-ready HTML backup, and a release note. / 将中文或英文草稿打磨成一份可直接发布的微信公众号 Word 成稿，包含杂志级结构、精致视觉规划、可商用配图、2.35:1 封面、可直接粘贴的 HTML 备份和发布说明。 Use this skill whenever the user mentions 公众号, 推文, 微信文章, WeChat article, 排版, 配图, 作图, 头图, 封面图, 信息图, or pastes/uploads a draft and wants it formatted, illustrated, or made publishable.
+description: Produce one publish-ready WeChat article package from a Chinese or English draft: Word-first layout, phone-readable typography, clear paragraph rhythm, disciplined image placement, commercial-safe visuals, paste-ready HTML, and release notes. / 将中文或英文草稿生产为一套可发布的微信公众号交付包:以 Word 为主交付,严格控制字号、段距、配图、阅读呼吸、HTML 备份和发布说明。 Use this skill whenever the user mentions 公众号, 推文, 微信文章, WeChat article, 排版, 配图, 作图, 头图, 封面图, 信息图, or pastes/uploads a draft and wants it formatted, illustrated, or made publishable.
 ---
 
 # WeChat Article Studio / 公众号一次成稿流水线
 
-> English: This skill turns a rough draft into a single polished Word file for WeChat publishing, plus a matching HTML backup, figures, cover art, and release notes.
+> English: This skill turns a draft into a phone-readable WeChat article package, with Word as the main delivery format.
 >
-> 中文：这套 skill 的目标，是把粗稿直接打磨成一份可以发布的公众号成稿，Word 为主交付，配套 HTML、图片、封面和发布说明。
+> 中文：这套 skill 的目标，是把草稿生产成一份能顺畅阅读、能直接粘贴进公众号后台的成稿包。
 
-**主交付只有一个:《文章名》.docx——顶尖排版、图片全部内嵌,打开 → 全选 → 复制 →
+**主交付只有一个:《文章名》.docx——字号、段距、图文节奏全部预设,图片全部内嵌,打开 → 全选 → 复制 →
 粘贴进公众号编辑器 → 发布。** 其余为随附:article.html(等价备选粘贴源)、高清 PNG、
 发布说明.txt、zip。docx 缺席 = 任务未完成。
+
+## Quality Bar / 质量基座
+
+本 skill 的根本目标是**阅读体验**。优先级如下:
+
+1. 手机阅读通畅:字号、行距、段后距、图文间隔、首屏信息密度必须稳定。
+2. 图文协同:每张图承担封面、解释、证据、转场或情绪功能,禁止装饰性堆图。
+3. 呼吸感:段落短,但不碎;连续三屏不能只有文字墙,也不能被图片打断逻辑。
+4. 内容可信:数字有来源清单,判断有事实支撑,敏感信息不上标题与图。
+5. 去 AI 腔:禁止模板化转折、空泛宏大词、机械排比和"不是 A,而是 B"式句法。
 
 ## Workflow / 工作流(按序执行)
 
 ### 0. 读规范
-先读 `references/layout-wechat.md`(排版是本 skill 的核心,通读)与
-`references/editorial.md`;规划配图时读 `references/design-system.md`(信息图)与
+先读 `references/wechat-layout-patterns.md`(公众号排版范式,通读)、
+`references/layout-wechat.md`(排版、字号、呼吸感是本 skill 的核心,通读)与
+`references/editorial.md`(含 AI 腔消毒);规划配图时读 `references/design-system.md`(信息图)与
 `references/images-sourcing.md`(商用网图)。规范是硬约束。
 
 ### 1. 吃透草稿
@@ -28,13 +39,14 @@ description: Turn Chinese or English article drafts into one publish-ready, top-
 定结构(冷开场 → 编号章节 → 引语/互动句 → 关于栏);写主标题 + 3 备选 + ≤120 字摘要。
 **数字纪律**:只用清单内数字,缺则『◻◻』占位并上报;敏感对比只进行文、带缓冲语、
 永不进图与标题。
+成稿后执行 `editorial.md` 的 AI 腔消毒:删掉模板转折、口号词、连续抽象名词和空泛收束句。
 
 ### 3. 图像规划(两类分治)
 - **信息图**(论点图):一律原创生成,选型与规范见 design-system.md;
 - **实景/氛围图**(头图、人物、场景):优先商用授权网图,按 images-sourcing.md
   三步验证(免费商用源 → 逐图核对授权 → 发布说明登记);下载被网络策略拦截时
   走占位框 + 直链清单回退。用户有自己的 AI 绘画管线时,给占位框 + 现成提示词。
-写出图像清单(编号/论点或画面/来源方式/插入位置)再动手。
+写出图像清单(编号/功能/论点或画面/来源方式/插入位置/前后段落)再动手。
 
 ### 4. 产图
 ```bash
@@ -46,9 +58,10 @@ python3 ../scripts/render.py figX.html figX.png   # 信息图,2x
 信息图统一 FIG 01/0N 编号,中途增删则全系列重编。
 
 ### 5. Word 排版(主交付,不可省)
-`npm i docx`,按 layout-wechat.md 第一节的顶尖排版规范 + `scripts/docx_scaffold.js`
+`npm i docx`,按 layout-wechat.md 第一节的 Word-first 排版规范 + `scripts/docx_scaffold.js`
 助手组装:文首大标题(供填入标题栏)→ 头图 → 正文(节奏、金句加粗、强调色、
 引语块、分隔符)→ 关于栏。所有图内嵌。
+排版完成后按 `layout-wechat.md` 的"手机阅读流 QA"逐屏检查。
 
 ### 6. HTML 备份
 按 layout-wechat.md 的段落模板出 article_src.html,
@@ -56,7 +69,8 @@ python3 ../scripts/render.py figX.html figX.png   # 信息图,2x
 
 ### 7. QA(三道,全部强制)
 ① 每图 view;② docx → soffice 转 PDF → pdftoppm 页图 → 拼 contact sheet → view 全页
-(图未裁切、引语底色连续、页码合理、粗体密度);③ HTML 整页截图切片 view。
+(图未裁切、引语底色连续、页码合理、粗体密度、每屏留白);③ HTML 整页截图切片 view;
+④ 通读一遍最终文案,清除 AI 腔和阅读卡顿。
 
 ### 8. 交付
 发布说明.txt(标题/摘要/粘贴流程/图片清单**含网图来源与授权**/口径提示)+
@@ -70,11 +84,13 @@ python3 ../scripts/render.py figX.html figX.png   # 信息图,2x
 4. 多业务默认平行呈现;"主线"字样须作者点头。
 5. 三道 QA 不许省。
 6. 代拟引语标注"发布前请本人确认";同号跨文不复用引语。
+7. 出现"不是 A,而是 B"、"本质上"、"赋能"、"闭环"、"重塑"等模板腔,默认改写或删除。
 
 ## File Map / 文件地图
 | 文件 | 用途 |
 |---|---|
-| `references/layout-wechat.md` | **核心**:docx 顶尖排版规范、粘贴流程、HTML 模板、QA、发布说明模板 |
+| `references/wechat-layout-patterns.md` | **核心**:公众号排版范式、手机阅读流、首屏、配图节奏、版式模型 |
+| `references/layout-wechat.md` | **核心**:docx 排版、字号、段距、粘贴流程、HTML 模板、QA、发布说明模板 |
 | `references/editorial.md` | 口吻档位、结构库、标题/摘要公式、数字纪律 |
 | `references/design-system.md` | 信息图设计系统(token、五种图型、渲染坑) |
 | `references/images-sourcing.md` | 商用网图:白名单、验证三步、下载与回退、登记格式 |

@@ -1,8 +1,8 @@
 # Layout Guidelines / 排版规范(核心)——Word 主交付 + HTML 备份 + QA + 发布说明
 
-This document defines the Word-first layout system, HTML backup, QA flow, and release-note template.
+This document defines the Word-first layout system, HTML backup, QA flow, and release-note template. Read `wechat-layout-patterns.md` first; this file turns those patterns into concrete Word and HTML settings.
 
-## 一、docx 顶尖排版规范(主交付)
+## 一、docx Word-first 排版规范(主交付)
 目标:主编打开 Word 看到的就是成品版面;全选粘贴进公众号编辑器后所见即所得。
 骨架与助手函数:`scripts/docx_scaffold.js`(R 正文 / B 金句 / A 强调色 / body / secNo /
 secTitle / caption / img / quote / divider / makeDoc)。
@@ -10,9 +10,18 @@ secTitle / caption / img / quote / divider / makeDoc)。
 ### 页面与节奏
 - A4;页边距 上下 1134 / 左右 1418 DXA(内容宽 16cm,图宽恒为 605px@96dpi)。
 - 全文统一 Microsoft YaHei;正文 11pt #333333,行距 line 380,段后 after 260——
-  这是"顶尖感"的底盘:**全文只允许这一种正文段样式**,不得混入第二种行距或字号。
+  这是阅读稳定性的底盘:**全文只允许这一种正文段样式**,不得混入第二种行距或字号。
 - 章节间呼吸:章节编号段 before 480;大图前 before 120、图注后 after 340。
 - 大节之间可用 divider(居中「· · ·」,#CCCCCC,before/after 300)最多 2 处。
+
+### 手机阅读流
+- 执行前先对照 `wechat-layout-patterns.md` 判断文章属于报道型、拆解型、访谈/人物型或产品/技术型。
+- 每段正文 1–3 句,理想长度 38–90 个汉字;超过 120 个汉字必须拆段。
+- 连续纯文字不超过 6 段;若超过,插入小标题、引语、图、分隔符或短段转场。
+- 连续短句不超过 5 段;短句过密会显得像 AI 断行,用一段解释性长句缓冲。
+- 每节开头先给读者一个"为什么读这一节"的入口,再展开材料。
+- 每张图前至少有一段铺垫,图后至少有一句收束;图片不能突然出现。
+- 首屏目标:标题 + 头图 + 1–2 段冷开场;不要把摘要、目录、作者介绍塞进首屏。
 
 ### 层级(自上而下唯一路径)
 | 层级 | 样式 |
@@ -32,12 +41,17 @@ secTitle / caption / img / quote / divider / makeDoc)。
 - 一律内嵌(ImageRun type:"png"/"jpg"),宽 605px,高按原图比例换算,段落居中;
 - 头图紧随大标题;信息图紧随其论证段;两图之间至少隔两段正文;
 - 照片 JPEG q85、信息图 PNG;单文件总大小控制在 ≤25MB。
+- 图像密度:1000–1600 字文章 2–4 张图;1600–2600 字 4–6 张图;超过 2600 字按章节补图,但连续两屏不能只有图。
+- 信息图承担解释或证据功能;氛围图承担首屏、转场或人物/场景感。无明确功能的图删除。
+- 图注不写废话:只说明主体、来源、场景或关键判断;不要重复正文小标题。
 
 ### 版面自检(排版 QA 清单)
 - [ ] 正文只有一种段样式;金句/强调色不超限
 - [ ] 图不跨页截断(必要时在图前加空段微调);引语块底纹连续
 - [ ] 章节编号连续、颜色一致;divider ≤2
 - [ ] 首屏 = 大标题 + 头图 + 冷开场首段,无杂物
+- [ ] 手机预览无文字墙:连续纯文字 ≤6 段,连续短句 ≤5 段
+- [ ] 每图都有前置铺垫与后置收束,图注不重复正文
 
 ## 二、Word → 公众号粘贴流程(写进发布说明)
 1. 打开 docx,首行大标题剪切填入公众号「标题」栏;
@@ -66,6 +80,7 @@ secTitle / caption / img / quote / divider / makeDoc)。
 2. **docx**:`soffice --headless --convert-to pdf x.docx` → `pdftoppm -jpeg -r 70 x.pdf p`
    → 页图拼 contact sheet → view 全页;
 3. HTML:playwright 整页截图(viewport 720 宽)→ 切 2–3 段逐段 view。
+4. 手机阅读流:按 390px 宽预览逐屏检查,记录文字墙、图片突兀、标题拥挤、图注过长四类问题并修掉。
 
 ## 五、发布说明模板(发布说明.txt)
 ```
