@@ -34,7 +34,7 @@ Core package:
 
 Example now included:
 
-- [Fable 5 被封禁，智谱冲万亿：模型采购进入双供应商时代](examples/fable-zhipu/final.md)
+- [Fable 5 被封禁，智谱冲万亿。中国模型登顶日即将来临？](examples/fable-zhipu/final.md)
 - [WeChat HTML preview](examples/fable-zhipu/wechat-ready.html)
 
 ## Editorial Standard

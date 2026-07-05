@@ -152,12 +152,13 @@ Structure:
 When only code is available, build images in this order:
 
 1. Write the visual job in one sentence.
-2. Pick a type: cover, mechanism, evidence, workflow, comparison.
-3. Sketch 3–5 nodes or cards.
-4. Create HTML/SVG at 1200×511 for cover or 1200×620 for figures.
-5. Render at 2x with Playwright.
-6. Insert into article and check at 390px mobile width.
-7. If text is too small, simplify the diagram instead of shrinking text.
+2. Pick the visual direction from the matrix and explain why it fits the article. Defaulting to dark graphite without article-specific reason fails QA.
+3. Pick a type: cover, mechanism, evidence, workflow, comparison.
+4. Sketch 3–5 nodes or cards.
+5. Create HTML/SVG at 1200×511 for cover or 1200×620 for figures.
+6. Render at 2x with Playwright.
+7. Insert into article and check at 390px mobile width.
+8. If text is too small, simplify the diagram instead of shrinking text.
 
 ## 六、Common Failures
 
@@ -168,6 +169,7 @@ When only code is available, build images in this order:
 - Decorative image with no function: breaks reading rhythm.
 - Diagram repeats the paragraph: wastes reader attention.
 - Every project uses the same dark background: reads as template, not editorial direction.
+- Dark background chosen only because it looks "premium": reject and choose a direction from article content.
 - Simple style demo used as final work: fails the go-live gate.
 
 ## 七、Required Output Note
