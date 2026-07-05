@@ -1,0 +1,62 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+*{box-sizing:border-box}body{margin:0;background:#000}
+#visual{position:relative;overflow:hidden;background:#071014;color:#f6f2e8;
+font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif}
+#visual:before{content:"";position:absolute;inset:-20%;background:
+radial-gradient(620px 360px at 78% 18%,rgba(129,204,210,.30),transparent 62%),
+radial-gradient(420px 300px at 8% 84%,rgba(207,199,154,.18),transparent 60%),
+linear-gradient(135deg,#081117 0%,#111a1f 48%,#080b0d 100%)}
+#visual:after{content:"";position:absolute;inset:0;opacity:.17;background-image:
+linear-gradient(110deg,rgba(255,255,255,.055) 1px,transparent 1px),
+linear-gradient(0deg,rgba(255,255,255,.035) 1px,transparent 1px);
+background-size:48px 48px,48px 48px;mask-image:radial-gradient(circle at 50% 45%,#000 20%,transparent 82%)}
+.grain{position:absolute;inset:0;opacity:.18;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");mix-blend-mode:soft-light}
+.wrap{position:absolute;inset:0;padding:48px 58px;z-index:2}
+.kicker{font-size:14px;letter-spacing:.28em;text-transform:uppercase;color:#88d5dc;font-weight:700}
+.title{font-size:48px;line-height:1.16;font-weight:800;letter-spacing:0;margin-top:18px;max-width:610px}
+.sub{position:absolute;left:58px;bottom:48px;font-size:20px;color:#c9d1d0;letter-spacing:.04em}
+.plate{position:absolute;right:58px;bottom:42px;padding:12px 16px;border:1px solid rgba(136,213,220,.36);color:#88d5dc;font-size:13px;letter-spacing:.22em;text-transform:uppercase}
+.diagram{position:absolute;right:54px;top:50px;width:500px;height:395px;z-index:1}
+.node{position:absolute;border:1px solid rgba(142,218,222,.48);background:rgba(7,16,20,.72);border-radius:8px;padding:13px 15px;box-shadow:0 18px 40px rgba(0,0,0,.28)}
+.node b{display:block;font-size:24px;letter-spacing:.02em}.node span{display:block;margin-top:7px;color:#aeb9b8;font-size:16px;line-height:1.5}
+.n1{left:0;top:44px}.n2{right:4px;top:24px}.n3{right:42px;bottom:38px}.n4{left:38px;bottom:18px}
+.pulse{position:absolute;left:184px;top:142px;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle,rgba(136,213,220,.34),rgba(136,213,220,.05) 54%,transparent 72%);border:1px solid rgba(136,213,220,.24)}
+.line{position:absolute;height:2px;background:linear-gradient(90deg,transparent,#88d5dc,transparent);transform-origin:left center;opacity:.8}
+.l1{left:148px;top:95px;width:215px;transform:rotate(-5deg)}.l2{left:306px;top:126px;width:165px;transform:rotate(72deg)}.l3{left:174px;top:316px;width:220px;transform:rotate(-8deg)}.l4{left:78px;top:250px;width:160px;transform:rotate(-70deg)}
+.fig-title{font-size:42px;line-height:1.18;font-weight:800}.fig-sub{margin-top:10px;color:#9fa9a8;font-size:18px}
+.canvas{position:absolute;left:50px;right:50px;top:128px;bottom:70px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.035);border-radius:14px}
+.step{position:absolute;width:250px;min-height:128px;border:1px solid rgba(136,213,220,.44);background:rgba(11,22,27,.82);border-radius:12px;padding:21px}
+.step .num{font-size:14px;letter-spacing:.22em;color:#88d5dc;font-weight:800}.step b{display:block;margin-top:10px;font-size:28px}.step span{display:block;margin-top:10px;color:#aeb9b8;font-size:17px;line-height:1.5}
+.s1{left:38px;top:42px}.s2{left:334px;top:42px}.s3{right:38px;top:42px}.s4{left:334px;bottom:32px;border-color:rgba(223,209,145,.58)}
+.arrow{position:absolute;height:3px;background:#88d5dc;opacity:.75}.a1{left:298px;top:105px;width:30px}.a2{left:594px;top:105px;width:30px}.a3{right:260px;top:210px;width:120px;transform:rotate(132deg)}
+.note{position:absolute;left:58px;right:58px;bottom:34px;border-top:1px solid rgba(255,255,255,.12);padding-top:15px;color:#c9d1d0;font-size:19px}
+
+#visual.analysis{background:#f6f3ec;color:#171717}
+#visual.analysis:before{background:
+linear-gradient(90deg,rgba(22,22,22,.06) 1px,transparent 1px),
+linear-gradient(0deg,rgba(22,22,22,.05) 1px,transparent 1px),
+linear-gradient(135deg,#faf8f2 0%,#ede7da 100%);background-size:54px 54px,54px 54px,auto}
+#visual.analysis:after{opacity:.38;background-image:radial-gradient(circle at 78% 20%,rgba(156,56,42,.16),transparent 28%),radial-gradient(circle at 15% 82%,rgba(34,83,91,.14),transparent 30%);mask-image:none}
+.analysis .kicker,.analysis .plate,.analysis .step .num{color:#9b3b2f}.analysis .title,.analysis .fig-title,.analysis .step b,.analysis .node b{color:#151515}
+.analysis .sub,.analysis .fig-sub,.analysis .node span,.analysis .step span,.analysis .note{color:#5f5a52}
+.analysis .plate{border-color:rgba(155,59,47,.34)}.analysis .node,.analysis .step{background:rgba(255,255,255,.78);border-color:rgba(30,30,30,.14);box-shadow:0 16px 34px rgba(46,37,24,.12)}
+.analysis .canvas{background:rgba(255,255,255,.55);border-color:rgba(30,30,30,.12)}.analysis .line,.analysis .arrow{background:#9b3b2f}.analysis .pulse{background:radial-gradient(circle,rgba(155,59,47,.16),rgba(155,59,47,.05) 55%,transparent 72%);border-color:rgba(155,59,47,.2)}
+.analysis .grain{opacity:.08;mix-blend-mode:multiply}
+
+#visual.product{background:#eef4f7;color:#152026}
+#visual.product:before{background:
+radial-gradient(460px 300px at 82% 22%,rgba(67,139,162,.24),transparent 58%),
+linear-gradient(180deg,#f8fbfc 0%,#e8f1f3 100%)}
+#visual.product:after{opacity:.55;background-image:
+linear-gradient(90deg,rgba(28,56,67,.065) 1px,transparent 1px),
+linear-gradient(0deg,rgba(28,56,67,.055) 1px,transparent 1px);background-size:42px 42px;mask-image:none}
+.product .kicker,.product .plate,.product .step .num{color:#176c82}.product .title,.product .fig-title,.product .step b,.product .node b{color:#142026}
+.product .sub,.product .fig-sub,.product .node span,.product .step span,.product .note{color:#5b6b72}
+.product .plate{border-color:rgba(23,108,130,.32);background:rgba(255,255,255,.55)}.product .node,.product .step{background:rgba(255,255,255,.86);border-color:rgba(23,108,130,.20);box-shadow:0 18px 38px rgba(36,71,82,.14)}
+.product .canvas{background:rgba(255,255,255,.62);border-color:rgba(23,108,130,.15)}.product .line,.product .arrow{background:#176c82}.product .pulse{background:radial-gradient(circle,rgba(23,108,130,.18),rgba(23,108,130,.05) 55%,transparent 72%);border-color:rgba(23,108,130,.18)}
+.product .grain{opacity:.06;mix-blend-mode:multiply}
+</style></head>
+<body><div id="visual" class="report" style="width:1200px;height:511px"><div class="wrap"><div class="kicker">report · WECHAT ARTICLE</div>
+<div class="title">一家县城工厂,为什么突然开始招聘算法工程师</div><div class="sub">报道型样文 · 首屏三件套 + 事实冲突 + 人物引语</div>
+<div class="plate">SAFE CROP 2.35:1</div></div>
+<div class="diagram"><div class="pulse"></div><div class="line l1"></div><div class="line l2"></div><div class="line l3"></div><div class="line l4"></div><div class="node n1"><b>订单</b><span>需求先变</span></div><div class="node n2"><b>现场</b><span>样本回来</span></div><div class="node n3"><b>岗位</b><span>补上算法</span></div><div class="node n4"><b>交付</b><span>结果复购</span></div></div><div class="grain"></div></div></body></html>

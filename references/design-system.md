@@ -1,9 +1,9 @@
-# Infographic Design System / 图表设计系统(深色信息图族)
+# Infographic Design System / 图表设计系统
 
-This guide defines the shared visual language for all infographics, covers, and supporting visuals.
+This guide defines the shared visual language for deterministic infographics, covers, and supporting visuals. Read `visual-production.md` first to choose between multimodal image generation and deterministic HTML/SVG production.
 
-目标:同一篇文章的所有图像出自同一套视觉语言,单张可截图传播,整组像一个系列。
-脚手架 `scripts/fig_scaffold.py` 已实现本规范的 token 与组件,直接 import 使用。
+目标:同一篇文章的所有图像出自同一套视觉语言,单张可截图传播,整组像一个系列。视觉语言必须按项目微调,不要所有文章都使用暗底科技风。
+脚手架 `scripts/fig_scaffold.py` 已实现本规范的 token 与组件,直接 import 使用。无多模态图像能力时,默认使用 HTML/SVG/Playwright 生成图,禁止交付占位式暗色标题框。
 
 ## 一、Token
 | 名称 | 值 | 用途 |

@@ -136,7 +136,7 @@ def grid_cards(cards):
 def strip(k, v_html):
     return f'<div class="strip"><span class="k">{k}</span><span class="v cn">{v_html}</span></div>'
 
-# 机制闭环(SVG)与问题—方案对比无法完全参数化,写法范式见 design-system.md 第三节;
+# 反馈回路(SVG)与问题—方案对比无法完全参数化,写法范式见 design-system.md 第三节;
 # 要点:站点矩形置四角 + marker 箭头 + 亮色回流边 + 中心 radial 光。
 
 if __name__ == "__main__":

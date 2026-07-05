@@ -1,8 +1,8 @@
 # WeChat Article Studio
 
-一套用于生产微信公众号成稿的 Codex skill。核心交付是一份排好版、嵌好图、可直接复制进公众号后台的 Word 文档。
+一套用于生产微信公众号成稿的 agent-ready workflow。核心交付是一份排好版、嵌好图、可直接复制进公众号后台的 Word 文档。
 
-A Codex skill for producing WeChat article packages from Chinese or English drafts. The main deliverable is a Word document with controlled typography, embedded visuals, and a paste-ready publishing flow.
+An agent-ready workflow for producing WeChat article packages from Chinese or English drafts. The main deliverable is a Word document with controlled typography, embedded visuals, and a paste-ready publishing flow.
 
 ## 核心标准 / Core Standard
 
@@ -41,19 +41,56 @@ This workflow studies the shared production habits of strong Chinese finance and
 6. Export the HTML backup and run QA on images, Word pages, and mobile-width reading flow.
 7. Package everything with release notes.
 
+## 接入方式 / Agent Compatibility
+
+This repository is designed as a file-based workflow that any capable coding or writing agent can read and execute. It is not tied to one runtime.
+
+Recommended entry file:
+
+- [SKILL.md](SKILL.md): start here for the full execution protocol.
+
+Expected agent behavior:
+
+- Read [references/wechat-layout-patterns.md](references/wechat-layout-patterns.md) before writing or laying out the article.
+- Read [references/writing-patterns.md](references/writing-patterns.md) before rewriting finance, technology, venture, or industry drafts.
+- Read [references/visual-production.md](references/visual-production.md) before creating covers, infographics, or scene visuals.
+- Read [references/release-gate.md](references/release-gate.md) before final delivery.
+- Read [references/layout-wechat.md](references/layout-wechat.md) before building Word or HTML output.
+- Read [references/editorial.md](references/editorial.md) before rewriting the article.
+- Use [scripts/](scripts) when rendering figures, embedding images, or assembling `.docx` files.
+
+Works well with:
+
+- Claude Code / Claude CLI
+- Codex CLI
+- Any local CLI agent that can read files, run scripts, inspect images, and create `.docx` / HTML outputs
+
+Search keywords:
+
+- WeChat article workflow
+- WeChat article layout
+- Claude Code skill
+- Claude CLI workflow
+- Codex CLI skill
+- AI agent writing workflow
+
 ## 质量检查 / Quality Checks
 
 - No unverified numbers.
 - No sensitive claims in titles, summaries, covers, or infographics.
 - No decorative images without a reading function.
+- No generic final visuals; every production image must encode article-specific substance.
 - No long text wall across more than six consecutive paragraphs.
 - No abrupt image insertion without a setup paragraph and a follow-up sentence.
 - No common AI tics such as binary reversal formulas, empty business jargon, or repetitive sentence scaffolds.
 
 ## 仓库结构 / Repository Structure
 
-- [SKILL.md](SKILL.md): core execution protocol.
+- [SKILL.md](SKILL.md): core execution protocol and recommended agent entry point.
 - [references/wechat-layout-patterns.md](references/wechat-layout-patterns.md): WeChat layout patterns, mobile reading rhythm, and article archetypes.
+- [references/writing-patterns.md](references/writing-patterns.md): finance and technology writing patterns, opening modes, information ladders, and sample structures.
+- [references/visual-production.md](references/visual-production.md): multimodal and no-multimodal visual production rules.
+- [references/release-gate.md](references/release-gate.md): final go-live gate for content, visuals, layout, and package delivery.
 - [references/editorial.md](references/editorial.md): voice, structure, title, summary, and AI-prose cleanup.
 - [references/layout-wechat.md](references/layout-wechat.md): Word layout, typography, spacing, HTML backup, and QA.
 - [references/design-system.md](references/design-system.md): visual system and image responsibilities.
