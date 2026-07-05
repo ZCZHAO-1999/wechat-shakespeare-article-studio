@@ -2,7 +2,7 @@
 
 Top-tier WeChat article workflow for Claude Code, Claude CLI, Codex CLI, and other local writing agents.
 
-一套面向微信公众号深度稿、财经科技稿、产品分析稿的 agent-ready 写作与排版工作流。目标不是“生成一篇文章”，而是把一个主题或草稿推进到可发布的完整成稿包：正文、标题、封面、信息图、HTML 预览、发布说明和质量检查。
+一套面向微信公众号深度稿、财经科技稿、产品分析稿的 agent-ready 写作与排版工作流。目标是把一个主题或草稿推进到可发布的完整成稿包：正文、标题、封面、信息图、HTML 预览、发布说明和质量检查。
 
 ## Why This Exists
 
@@ -34,7 +34,7 @@ Core package:
 
 Example now included:
 
-- [Fable 5 被封禁，智谱冲万亿：AI 供应链开始换备胎](examples/fable-zhipu/final.md)
+- [Fable 5 被封禁，智谱冲万亿：模型采购进入双供应商时代](examples/fable-zhipu/final.md)
 - [WeChat HTML preview](examples/fable-zhipu/wechat-ready.html)
 
 ## Editorial Standard
